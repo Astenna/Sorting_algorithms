@@ -1,0 +1,3 @@
+/home/constance/Pulpit/Sorting_algorithms/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/constance/Pulpit/Sorting_algorithms/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/constance/Pulpit/Sorting_algorithms/cmake-build-debug/CMakeFiles/Sorting_algorithms.dir

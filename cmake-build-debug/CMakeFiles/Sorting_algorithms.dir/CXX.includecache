@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/constance/Pulpit/Sorting_algorithms/main.cpp
+iostream
+-
+
+/home/constance/Pulpit/Sorting_algorithms/quicksort.cpp
+cstdlib
+-
+iostream
+-
+
