@@ -84,6 +84,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/constance/Pulpit/Sorting_algorithms/introsort.cpp">
+			<Option target="Sorting_algorithms"/>
+		</Unit>
 		<Unit filename="/home/constance/Pulpit/Sorting_algorithms/main.cpp">
 			<Option target="Sorting_algorithms"/>
 		</Unit>

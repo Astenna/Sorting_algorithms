@@ -123,6 +123,33 @@ Sorting_algorithms/fast:
 	$(MAKE) -f CMakeFiles/Sorting_algorithms.dir/build.make CMakeFiles/Sorting_algorithms.dir/build
 .PHONY : Sorting_algorithms/fast
 
+introsort.o: introsort.cpp.o
+
+.PHONY : introsort.o
+
+# target to build an object file
+introsort.cpp.o:
+	$(MAKE) -f CMakeFiles/Sorting_algorithms.dir/build.make CMakeFiles/Sorting_algorithms.dir/introsort.cpp.o
+.PHONY : introsort.cpp.o
+
+introsort.i: introsort.cpp.i
+
+.PHONY : introsort.i
+
+# target to preprocess a source file
+introsort.cpp.i:
+	$(MAKE) -f CMakeFiles/Sorting_algorithms.dir/build.make CMakeFiles/Sorting_algorithms.dir/introsort.cpp.i
+.PHONY : introsort.cpp.i
+
+introsort.s: introsort.cpp.s
+
+.PHONY : introsort.s
+
+# target to generate assembly for a file
+introsort.cpp.s:
+	$(MAKE) -f CMakeFiles/Sorting_algorithms.dir/build.make CMakeFiles/Sorting_algorithms.dir/introsort.cpp.s
+.PHONY : introsort.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Sorting_algorithms"
+	@echo "... introsort.o"
+	@echo "... introsort.i"
+	@echo "... introsort.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

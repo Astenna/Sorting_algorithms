@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/constance/Pulpit/Sorting_algorithms/introsort.cpp
+cmath
+-
+
 /home/constance/Pulpit/Sorting_algorithms/main.cpp
 iostream
 -
