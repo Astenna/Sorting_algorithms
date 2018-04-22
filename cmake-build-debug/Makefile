@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/Sorting_algorithms.dir/build.make CMakeFiles/Sorting_algorithms.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mergesort.o: mergesort.cpp.o
+
+.PHONY : mergesort.o
+
+# target to build an object file
+mergesort.cpp.o:
+	$(MAKE) -f CMakeFiles/Sorting_algorithms.dir/build.make CMakeFiles/Sorting_algorithms.dir/mergesort.cpp.o
+.PHONY : mergesort.cpp.o
+
+mergesort.i: mergesort.cpp.i
+
+.PHONY : mergesort.i
+
+# target to preprocess a source file
+mergesort.cpp.i:
+	$(MAKE) -f CMakeFiles/Sorting_algorithms.dir/build.make CMakeFiles/Sorting_algorithms.dir/mergesort.cpp.i
+.PHONY : mergesort.cpp.i
+
+mergesort.s: mergesort.cpp.s
+
+.PHONY : mergesort.s
+
+# target to generate assembly for a file
+mergesort.cpp.s:
+	$(MAKE) -f CMakeFiles/Sorting_algorithms.dir/build.make CMakeFiles/Sorting_algorithms.dir/mergesort.cpp.s
+.PHONY : mergesort.cpp.s
+
 quicksort.o: quicksort.cpp.o
 
 .PHONY : quicksort.o
@@ -189,6 +216,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mergesort.o"
+	@echo "... mergesort.i"
+	@echo "... mergesort.s"
 	@echo "... quicksort.o"
 	@echo "... quicksort.i"
 	@echo "... quicksort.s"

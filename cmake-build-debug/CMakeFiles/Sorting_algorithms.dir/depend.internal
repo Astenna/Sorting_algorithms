@@ -3,5 +3,10 @@
 
 CMakeFiles/Sorting_algorithms.dir/main.cpp.o
  /home/constance/Pulpit/Sorting_algorithms/main.cpp
+ /home/constance/Pulpit/Sorting_algorithms/sorts.h
+CMakeFiles/Sorting_algorithms.dir/mergesort.cpp.o
+ /home/constance/Pulpit/Sorting_algorithms/mergesort.cpp
+ /home/constance/Pulpit/Sorting_algorithms/sorts.h
 CMakeFiles/Sorting_algorithms.dir/quicksort.cpp.o
  /home/constance/Pulpit/Sorting_algorithms/quicksort.cpp
+ /home/constance/Pulpit/Sorting_algorithms/sorts.h

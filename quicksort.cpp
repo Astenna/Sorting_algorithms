@@ -1,8 +1,5 @@
-//
-// Created by constance on 18.04.18.
-//
 #include <cstdlib>
-#include <iostream>
+#include "sorts.h"
 
 using namespace std;
 
@@ -33,3 +30,8 @@ void quicksort(type array[], int left, int right)
         quicksort(array, position+1, right);
     }
 }
+
+template void quicksort<int>(int array[], int left, int right);
+template void quicksort<float>(float array[], int left, int right);
+template void quicksort<long>(long array[], int left, int right);
+template void quicksort<double>(double array[], int left, int right);

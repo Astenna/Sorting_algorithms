@@ -9,10 +9,20 @@
 /home/constance/Pulpit/Sorting_algorithms/main.cpp
 iostream
 -
+sorts.h
+/home/constance/Pulpit/Sorting_algorithms/sorts.h
+
+/home/constance/Pulpit/Sorting_algorithms/mergesort.cpp
+iostream
+-
+sorts.h
+/home/constance/Pulpit/Sorting_algorithms/sorts.h
 
 /home/constance/Pulpit/Sorting_algorithms/quicksort.cpp
 cstdlib
 -
-iostream
--
+sorts.h
+/home/constance/Pulpit/Sorting_algorithms/sorts.h
+
+/home/constance/Pulpit/Sorting_algorithms/sorts.h
 

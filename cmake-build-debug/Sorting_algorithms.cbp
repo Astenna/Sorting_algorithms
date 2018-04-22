@@ -87,7 +87,13 @@
 		<Unit filename="/home/constance/Pulpit/Sorting_algorithms/main.cpp">
 			<Option target="Sorting_algorithms"/>
 		</Unit>
+		<Unit filename="/home/constance/Pulpit/Sorting_algorithms/mergesort.cpp">
+			<Option target="Sorting_algorithms"/>
+		</Unit>
 		<Unit filename="/home/constance/Pulpit/Sorting_algorithms/quicksort.cpp">
+			<Option target="Sorting_algorithms"/>
+		</Unit>
+		<Unit filename="/home/constance/Pulpit/Sorting_algorithms/sorts.h">
 			<Option target="Sorting_algorithms"/>
 		</Unit>
 		<Unit filename="/home/constance/Pulpit/Sorting_algorithms/CMakeLists.txt">
