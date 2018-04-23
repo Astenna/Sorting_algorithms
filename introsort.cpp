@@ -1,19 +1,9 @@
 #include <cmath>
-
-template <class type>
-void introQuick(type array[], int left, int right, int recursionLevel);
-
-template <class type>
-void heapsort(type array, int left, int right);
-
-template <class type>
-void swap(type first, type second);
-
+#include "sorts.h"
 template <class type>
 void introsort(type array[], int left, int right)
 {
     int m = (right-left)*log2(right-left);
-
     introQuick(array,left,right,m);
 }
 
@@ -31,12 +21,12 @@ void introQuick(type array[], int left, int right, int recursionLevel)
             {
                 if(array[i] < pivot)
                 {
-                    swap(array[i], array[position]);
+                    mySwap(array[i], array[position]);
                     ++position;
                 }
             }
 
-            swap(array[position], array[right]);
+            mySwap(array[position], array[right]);
             introQuick(array, left, position-1, --recursionLevel);
             introQuick(array, position+1, right,recursionLevel);
         }
@@ -48,10 +38,10 @@ void introQuick(type array[], int left, int right, int recursionLevel)
 }
 
 template <class type>
-void heapsort(type array, int size, int node)
+void heapsort(type array[], int size, int node)
 {
     const int root = 0;
-    type max = root;
+    type max = array[root];
     int leftChild = 2*node+1;
     int rightChild = 2*node+2;
 
@@ -65,15 +55,20 @@ void heapsort(type array, int size, int node)
     }
     if(max != array[root])
     {
-        swap(array[root], array[max]);
+        mySwap(array[root], max);
         heapsort(array, size, node+1);
     }
 }
 
-template <class type>
-void swap(type first, type second)
-{
-    type tmp = first;
-    first = second;
-    second = tmp;
-}
+template void introQuick<int>(int array[], int left, int right, int recursionLevel);
+template void introQuick<float>(float array[], int left, int right, int recursionLevel);
+template void introQuick<long>(long array[], int left, int right, int recursionLevel);
+template void introQuick<double>(double array[], int left, int right, int recursionLevel);
+template void heapsort<int>(int array[], int size, int node);
+template void heapsort<float>(float array[], int size, int node);
+template void heapsort<long>(long array[], int size, int node);
+template void heapsort<double>(double array[], int size, int node);
+template void introsort<int>(int array[], int left, int right);
+template void introsort<float>(float array[], int left, int right);
+template void introsort<long>(long array[], int left, int right);
+template void introsort<double>(double array[], int left, int right);

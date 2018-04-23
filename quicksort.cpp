@@ -1,7 +1,4 @@
-#include <cstdlib>
 #include "sorts.h"
-
-using namespace std;
 
 template <class type>
 void quicksort(type array[], int left, int right)
@@ -9,23 +6,18 @@ void quicksort(type array[], int left, int right)
     if(right>left)
     {
         int position = left;
-        type pivot = array[right]; // TO BE CHANGED
+        type pivot = array[(right-left)/2]; // TO BE CHANGED
 
         for(int i=left; i<right; ++i)
         {
             if(array[i] < pivot)
             {
-                type tmp = array[i];
-                array[i] = array[position];
-                array[position] = tmp;
+                mySwap(array[i], array[position]);
                 ++position;
             }
         }
 
-        type tmp = array[position];
-        array[position] = pivot;
-        array[right] = tmp;
-
+        mySwap(array[position], array[right]);
         quicksort(array, left, position-1);
         quicksort(array, position+1, right);
     }

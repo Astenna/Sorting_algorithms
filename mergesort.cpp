@@ -1,7 +1,4 @@
-#include <iostream>
 #include "sorts.h"
-
-using namespace std;
 
 template <class type>
 void merge(type array[], int left, int sep, int right)
@@ -25,7 +22,6 @@ void merge(type array[], int left, int sep, int right)
             tmpArray[j++]=array[l++];
         }
     }
-
     if(l<=sep)
     {
         while(l<=sep)
@@ -40,7 +36,6 @@ void merge(type array[], int left, int sep, int right)
             tmpArray[j++]=array[r++];
         }
     }
-
     for(int i=left; i<=right; ++i)
     {
         array[i] = tmpArray[i];
@@ -58,14 +53,11 @@ void mergesort(type array[], int left, int right)
     }
 }
 
-
 template void merge<int>(int array[], int left, int sep, int right);
 template void merge<float>(float array[], int left, int sep, int right);
 template void merge<long>(long array[], int left, int sep, int right);
 template void merge<double>(double array[], int left, int sep, int right);
-/* smth wrong, idk what
-template void mergesort<int>(int array[], int left, int sep, int right);
-template void mergesort<float>(float array[], int left, int sep, int right);
-template void mergesort<long>(long array[], int left, int sep, int right);
-template void mergesort<double>(double array[], int left, int sep, int right);
- */
+template void mergesort<int>(int array[], int left, int right);
+template void mergesort<float>(float array[], int left, int right);
+template void mergesort<long>(long array[], int left, int right);
+template void mergesort<double>(double array[], int left, int right);

@@ -6,12 +6,22 @@ int main()
 {
     int array[10] = {2, 5, 8, 1, 3, 9,4, 10, 7, 6};
     quicksort<int>(array, 0, 9);
-    //mergesort<int>(array,0,9);
     for(int i=0; i<10; ++i)
     {
         cout<<array[i]<<endl;
     }
+
+    int array2[10] = {2, 5, 8, 1, 3, 9,4, 99, 7, 6};
+    introsort<int>(array2, 0, 9);
+    for(int i=0; i<10; ++i)
+    {
+        cout<<array2[i]<<endl;
+    }
     return 0;
 }
+
+
+
+
 
 

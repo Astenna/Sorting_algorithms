@@ -9,6 +9,8 @@
 /home/constance/Pulpit/Sorting_algorithms/introsort.cpp
 cmath
 -
+sorts.h
+/home/constance/Pulpit/Sorting_algorithms/sorts.h
 
 /home/constance/Pulpit/Sorting_algorithms/main.cpp
 iostream
@@ -17,14 +19,10 @@ sorts.h
 /home/constance/Pulpit/Sorting_algorithms/sorts.h
 
 /home/constance/Pulpit/Sorting_algorithms/mergesort.cpp
-iostream
--
 sorts.h
 /home/constance/Pulpit/Sorting_algorithms/sorts.h
 
 /home/constance/Pulpit/Sorting_algorithms/quicksort.cpp
-cstdlib
--
 sorts.h
 /home/constance/Pulpit/Sorting_algorithms/sorts.h
 
