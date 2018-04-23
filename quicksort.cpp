@@ -6,7 +6,8 @@ void quicksort(type array[], int left, int right)
     if(right>left)
     {
         int position = left;
-        type pivot = array[(right-left)/2]; // TO BE CHANGED
+        mySwap(array[(right+left)/2], array[right]);
+        type pivot = array[right];
 
         for(int i=left; i<right; ++i)
         {

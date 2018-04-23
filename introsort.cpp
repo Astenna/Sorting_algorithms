@@ -1,5 +1,6 @@
 #include <cmath>
 #include "sorts.h"
+
 template <class type>
 void introsort(type array[], int left, int right)
 {
@@ -7,7 +8,7 @@ void introsort(type array[], int left, int right)
     introQuick(array,left,right,m);
 }
 
-template <class type> //without left!
+template <class type>
 void introQuick(type array[], int left, int right, int recursionLevel)
 {
     if(right>left)
@@ -15,7 +16,8 @@ void introQuick(type array[], int left, int right, int recursionLevel)
         if(recursionLevel > 0)
         {
             int position = left;
-            type pivot = array[right]; // TO BE CHANGED
+            mySwap(array[(right+left)/2], array[right]);
+            type pivot = array[right];
 
             for(int i=left; i<right; ++i)
             {
@@ -32,16 +34,15 @@ void introQuick(type array[], int left, int right, int recursionLevel)
         }
         else
         {
-            heapsort(array, right, 0);
+            heapsort(array, left, right, 0);
         }
     }
 }
 
 template <class type>
-void heapsort(type array[], int size, int node)
+void heapsort(type array[], int start, int size, int node)
 {
-    const int root = 0;
-    type max = array[root];
+    type max = array[start];
     int leftChild = 2*node+1;
     int rightChild = 2*node+2;
 
@@ -53,10 +54,10 @@ void heapsort(type array[], int size, int node)
     {
         max = array[rightChild];
     }
-    if(max != array[root])
+    if(max != array[start])
     {
-        mySwap(array[root], max);
-        heapsort(array, size, node+1);
+        mySwap(array[start], max);
+        heapsort(array,start, size, node+1);
     }
 }
 
@@ -64,10 +65,10 @@ template void introQuick<int>(int array[], int left, int right, int recursionLev
 template void introQuick<float>(float array[], int left, int right, int recursionLevel);
 template void introQuick<long>(long array[], int left, int right, int recursionLevel);
 template void introQuick<double>(double array[], int left, int right, int recursionLevel);
-template void heapsort<int>(int array[], int size, int node);
-template void heapsort<float>(float array[], int size, int node);
-template void heapsort<long>(long array[], int size, int node);
-template void heapsort<double>(double array[], int size, int node);
+template void heapsort<int>(int array[], int start, int size, int node);
+template void heapsort<float>(float array[], int start, int size, int node);
+template void heapsort<long>(long array[], int start, int size, int node);
+template void heapsort<double>(double array[], int start, int size, int node);
 template void introsort<int>(int array[], int left, int right);
 template void introsort<float>(float array[], int left, int right);
 template void introsort<long>(long array[], int left, int right);

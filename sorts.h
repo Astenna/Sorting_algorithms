@@ -14,7 +14,7 @@ extern void introsort(type array[], int left, int right);
 template <class type>
 extern void introQuick(type array[], int left, int right, int recursionLevel);
 template <class type>
-extern void heapsort(type array[], int left, int right);
+extern void heapsort(type array[], int start, int left, int right);
 
 template <class type>
 void mySwap(type &first, type &second)
