@@ -15,22 +15,22 @@ void introsortRecursive(type array[], int left, int right, int recursionLevel)
     {
         if(recursionLevel > 0)
         {
-            int position = left;
-            mySwap(array[(right+left)/2], array[right]);
-            type pivot = array[right];
-
-            for(int i=left; i<right; ++i)
+            if(right>left)
             {
-                if(array[i] < pivot)
+                int pivot = (right+left)/2;
+                int l = left;
+                int r = right-1;
+                while( l < r)
                 {
-                    mySwap(array[i], array[position]);
-                    ++position;
+                    while(array[l] < array[pivot])
+                        l++;
+                    while(array[r] > array[pivot])
+                        r--;
+                    mySwap(array[l++],array[r--]);
                 }
+                introsortRecursive(array, left, pivot, recursionLevel-1);
+                introsortRecursive(array, pivot+1, right, recursionLevel-1);
             }
-
-            mySwap(array[position], array[right]);
-            introsortRecursive(array, left, position-1, recursionLevel-1);
-            introsortRecursive(array, position+1, right, recursionLevel-1);
         }
         else
             heapsort(array,left,right);

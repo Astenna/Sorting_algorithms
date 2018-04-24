@@ -39,6 +39,10 @@ void merge(type array[], int left, int sep, int right)
     for(int i=left; i<=right; ++i)
     {
         array[i] = tmpArray[i];
+    } /* ten delete OK? */
+    for(int i=left; i<=right; ++i)
+    {
+        delete &tmpArray[i];
     }
 }
 template <class type>

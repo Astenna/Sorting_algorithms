@@ -5,26 +5,26 @@ void quicksort(type array[], int left, int right)
 {
     if(right>left)
     {
-        int position = left;
-        mySwap(array[(right+left)/2], array[right]);
-        type pivot = array[right];
-
-        for(int i=left; i<right; ++i)
+        int pivot = (right+left)/2;
+        int l = left;
+        int r = right-1;
+        while( l < r)
         {
-            if(array[i] < pivot)
-            {
-                mySwap(array[i], array[position]);
-                ++position;
-            }
+            while(array[l] < array[pivot])
+                l++;
+            while(array[r] > array[pivot])
+                r--;
+            mySwap(array[l++],array[r--]);
         }
-
-        mySwap(array[position], array[right]);
-        quicksort(array, left, position-1);
-        quicksort(array, position+1, right);
+        quicksort(array, left, pivot);
+        quicksort(array, pivot+1, right);
     }
+
 }
 
 template void quicksort<int>(int array[], int left, int right);
 template void quicksort<float>(float array[], int left, int right);
 template void quicksort<long>(long array[], int left, int right);
 template void quicksort<double>(double array[], int left, int right);
+
+

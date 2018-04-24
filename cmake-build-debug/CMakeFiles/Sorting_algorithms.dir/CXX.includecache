@@ -19,6 +19,14 @@ sorts.h
 /home/constance/Pulpit/Sorting_algorithms/main.cpp
 iostream
 -
+chrono
+-
+fstream
+-
+algorithm
+-
+string
+-
 sorts.h
 /home/constance/Pulpit/Sorting_algorithms/sorts.h
 

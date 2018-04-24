@@ -22,11 +22,11 @@ void heapify(type array[], int start, int end, int node)
     int leftChild = start + (2*node) + 1;
     int rightChild = start + (2*node) + 2;
 
-    if(leftChild <= end &&  array[leftChild] > array[max]) // end also
+    if(leftChild <= end && array[leftChild] > array[max]) // end also
     {
         max = leftChild;
     }
-    if(rightChild <= end &&  array[rightChild] > array[max]) // end also
+    if(rightChild <= end && array[rightChild] > array[max]) // end also
     {
         max = rightChild;
     }

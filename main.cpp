@@ -1,97 +1,107 @@
 #include <iostream>
+#include <chrono>
+#include <fstream>
+#include <algorithm>
+#include <string>
 #include "sorts.h"
 using namespace std;
 
+template <class type>
+bool checkIfSorted(type array[], int size);
+template <class type>
+void addRandomSorted(type array[], int size, float percentage);
+
 int main()
 {
-    int tableSizes[5] = {10000, 50000, 100000, 500000, 1000000};
-    int n = 100; // number of tables to check
-    bool correct = true;
-    int table[tableSizes[4]];
+    int size[] = {10000, 50000, 100000, 500000, 1000000};
+    float percentSorted[] = {0, 25, 50, 75, 95, 99, 99.7};
+    int n = 100, j = 0, i = 0; // number of arrays to check
+    int array[size[4]];      // i,j for indexing size and percentSorted
+    std::chrono::time_point<std::chrono::system_clock> start, end;
+    ofstream file;
+    string fileName;
 
-    /* INITIAL CORRECTNESS CHECKING FOR 10K ELEMENTS TABLES */
+    /* INITIAL CORRECTNESS CHECKING FOR 10K? ELEMENTS ARRAYS */
 
-    /* quicksort */
+    addRandomSorted(array, size[i], percentSorted[j]);
+    quicksort(array, 0, size[i]);
+    cout << "QUICKSORT checked for " << size[i] << " elements" << endl;
+    checkIfSorted(array, size[i]);
 
-    for(int i=0; i<tableSizes[0]; ++i)
+    addRandomSorted(array, size[i], percentSorted[j]);
+    mergesort(array, 0, size[i]);
+    cout << "MERGESORT checked for " << size[i] << " elements" << endl;
+    checkIfSorted(array, size[i]);
+
+    addRandomSorted(array, size[i], percentSorted[j]);
+    introsort(array, 0, size[i]);
+    cout << "INTROSORT checked for " << size[i] << " elements" << endl;
+    checkIfSorted(array, size[i]);
+
+    /* MEASUREMENTS FOR STATISTICS */
+    // values to change
+    i=0; // from 0 to 4
+    // index of array size[] = {10000, 50000, 100000, 500000, 1000000}
+    j=0 ; // from 0 to 7
+    // index of array percentSorted[] = {0, 25, 50, 75, 95, 99, 99.7}
+    fileName = "sort" + to_string(size[i]) + "elements";
+    file.open(fileName, ios::app);
+
+    for(int j=0; j<n; ++j)
     {
-        table[i] = rand() % 1000000 + 1;
+        addRandomSorted(array, size[i], percentSorted[j]);
+        start = std::chrono::system_clock::now();
+        mergesort(array,0,size[i]);
+        end = std::chrono::system_clock::now();
+        file << std::chrono::duration_cast<std::chrono::milliseconds>(
+                end - start).count() << " , ";
+
+        addRandomSorted(array, size[i], percentSorted[j]);
+        start = std::chrono::system_clock::now();
+        quicksort(array,0,size[i]);
+        end = std::chrono::system_clock::now();
+        file << std::chrono::duration_cast<std::chrono::milliseconds>(
+                end - start).count() << " , ";
+
+        addRandomSorted(array, size[i], percentSorted[j]);
+        start = std::chrono::system_clock::now();
+        introsort(array,0,size[i]);
+        end = std::chrono::system_clock::now();
+        file << std::chrono::duration_cast<std::chrono::milliseconds>(
+                end - start).count() << " , ";
+
+        file << endl;
     }
-    quicksort(table, 0, tableSizes[0]);
-    for(int i=0; i<tableSizes[0]; ++i)
+    file.close();
+}
+template <class type>
+void addRandomSorted(type array[], int size, float percentage)
+{
+    int sorted= percentage/100*size;
+    for(int i=0; i<size; ++i)
     {
-        if(i != (tableSizes[0]-1))
-        {
-            if(table[i]>table[i+1])
-                correct = false;
-        }
+        array[i] = rand() % size*10 +1;
     }
-
-    cout << "QUICKSORT" << endl;
-    cout << "First 10 000 numbers in correct order: (1 - TRUE, 0 - FALSE) " << correct << endl;
-
-    /* mergesort */
-    correct = true;
-
-    for(int i=0; i<tableSizes[0]; ++i)
-    {
-        table[i] = rand() % 1000000 + 1;
-    }
-    mergesort(table, 0, tableSizes[0]);
-    for(int i=0; i<tableSizes[0]; ++i)
-    {
-        if(i != (tableSizes[0]-1))
-        {
-            if(table[i]>table[i+1])
-                correct = false;
-        }
-    }
-
-    cout << "MERGESORT" << endl;
-    cout << "First 10 000 numbers in correct order: (1 - TRUE, 0 - FALSE) " << correct << endl;
-
-    /* heapsort with random*/
-    correct = true;
-
-    for(int i=0; i<tableSizes[0]; ++i) {
-        table[i] = rand() %100000 + 1;
-    }
-    heapsort(table,1000,10000);
-    for(int i=1000; i<10000; ++i)
-    {
-        if(i != (tableSizes[0]-1))
-        {
-            if(table[i]>table[i+1])
-            {
-                correct = false;
-            }
-        }
-    }
-    cout << "HEAPSORT random " << endl;
-    cout << "First 10 000 numbers in correct order: (1 - TRUE, 0 - FALSE) " << correct << endl;
-
-    /* introsort with random*/
-    correct = true;
-
-    for(int i=0; i<tableSizes[0]; ++i) {
-        table[i] = 1;// rand() %100000 + 1;
-    }
-    introsort(table,1000,10000);
-    for(int i=1000; i<10000; ++i)
-    {
-        if(i != (tableSizes[0]-1))
-        {
-            if(table[i]>table[i+1])
-            {
-                correct = false;
-            }
-        }
-    }
-    cout << "INTROSORT random " << endl;
-    cout << "First 10 000 numbers in correct order: (1 - TRUE, 0 - FALSE) " << correct << endl;
+    //sort(array, array+sorted);
 }
 
-
+template <class type>
+bool checkIfSorted(type array[], int end)
+{
+    for(int i=end; i<end; ++i)
+    {
+        if(i != (end-1))
+        {
+            if(array[i]>array[i+1])
+            {
+                cout << "Something went wrong! :(" << endl;
+                return false;
+            }
+        }
+    }
+    cout << "Works perfect!" << endl;
+    return true;
+}
 
 
 
