@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/constance/Pulpit/Sorting_algorithms/heapsort.cpp
+sorts.h
+/home/constance/Pulpit/Sorting_algorithms/sorts.h
+
 /home/constance/Pulpit/Sorting_algorithms/introsort.cpp
 cmath
 -

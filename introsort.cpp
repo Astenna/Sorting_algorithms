@@ -4,12 +4,12 @@
 template <class type>
 void introsort(type array[], int left, int right)
 {
-    int m = (right-left)*log2(right-left);
-    introQuick(array,left,right,m);
+    int m = 2*log2(right-left+1);
+    introsortRecursive(array,left,right,m);
 }
 
 template <class type>
-void introQuick(type array[], int left, int right, int recursionLevel)
+void introsortRecursive(type array[], int left, int right, int recursionLevel)
 {
     if(right>left)
     {
@@ -29,47 +29,22 @@ void introQuick(type array[], int left, int right, int recursionLevel)
             }
 
             mySwap(array[position], array[right]);
-            introQuick(array, left, position-1, --recursionLevel);
-            introQuick(array, position+1, right,recursionLevel);
+            introsortRecursive(array, left, position-1, recursionLevel-1);
+            introsortRecursive(array, position+1, right, recursionLevel-1);
         }
         else
-        {
-            heapsort(array, left, right, 0);
-        }
+            heapsort(array,left,right);
     }
 }
 
-template <class type>
-void heapsort(type array[], int start, int size, int node)
-{
-    type max = array[start];
-    int leftChild = 2*node+1;
-    int rightChild = 2*node+2;
 
-    if(leftChild < size && array[leftChild] > max)
-    {
-        max = array[leftChild];
-    }
-    if(rightChild < size && array[rightChild] > max)
-    {
-        max = array[rightChild];
-    }
-    if(max != array[start])
-    {
-        mySwap(array[start], max);
-        heapsort(array,start, size, node+1);
-    }
-}
-
-template void introQuick<int>(int array[], int left, int right, int recursionLevel);
-template void introQuick<float>(float array[], int left, int right, int recursionLevel);
-template void introQuick<long>(long array[], int left, int right, int recursionLevel);
-template void introQuick<double>(double array[], int left, int right, int recursionLevel);
-template void heapsort<int>(int array[], int start, int size, int node);
-template void heapsort<float>(float array[], int start, int size, int node);
-template void heapsort<long>(long array[], int start, int size, int node);
-template void heapsort<double>(double array[], int start, int size, int node);
 template void introsort<int>(int array[], int left, int right);
 template void introsort<float>(float array[], int left, int right);
 template void introsort<long>(long array[], int left, int right);
 template void introsort<double>(double array[], int left, int right);
+template void introsortRecursive<int>(int array[], int left, int right, int recursionLevel);
+template void introsortRecursive<float>(float array[], int left, int right, int recursionLevel);
+template void introsortRecursive<long>(long array[], int left, int right, int recursionLevel);
+template void introsortRecursive<double>(double array[], int left, int right, int recursionLevel); 
+
+
