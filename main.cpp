@@ -12,10 +12,10 @@ void addRandomSorted(type array[], int size, float percentage);
 
 int main()
 {
-    int size[] = {10000, 50000, 75000, 100000, 1000000};
+    int size[] = {10000, 15000, 25000, 50000, 75000};
     float percentSorted[] = {0, 25, 50, 75, 95, 99, 99.7};
     int n = 100, j = 0, i = 0; // number of arrays to check
-    int array[size[4]];      // i,j for indexing size and percentSorted
+    int array[75000];      // i,j for indexing size and percentSorted
     std::chrono::time_point<std::chrono::system_clock> start, end;
     ofstream file;
     string fileName;
@@ -38,12 +38,11 @@ int main()
     checkIfSorted(array, size[i]);
 
     /* MEASUREMENTS FOR STATISTICS */
-    // values to change
-    i=2; // from 0 to 4
-    // index of array size[] = {10000, 50000, 100000, 150000, 1000000}
-    for(j=0;j<=6;++j)
-    { // from 0 to 6
-        // index of array percentSorted[] = {0, 25, 50, 75, 95, 99, 99.7}
+    // values to change - i,j
+    i=4; // from 0 to 4 // 10k 50k 75k
+    // index of array size[] = 10K 15K 25K 50K 75K
+    for(j=1;j<=6;++j) // from 0 to 6
+    { // index of array percentSorted[] = 0, 25, 50, 75, 95, 99, 99.7
         fileName = "E" + to_string(size[i]) + "S" + to_string(ceil(percentSorted[j]));
         file.open(fileName, ios::app);
 
