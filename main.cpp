@@ -2,7 +2,6 @@
 #include <chrono>
 #include <fstream>
 #include <algorithm>
-#include <string>
 #include "sorts.h"
 using namespace std;
 
@@ -13,7 +12,7 @@ void addRandomSorted(type array[], int size, float percentage);
 
 int main()
 {
-    int size[] = {10000, 50000, 100000, 500000, 1000000};
+    int size[] = {10000, 50000, 75000, 100000, 1000000};
     float percentSorted[] = {0, 25, 50, 75, 95, 99, 99.7};
     int n = 100, j = 0, i = 0; // number of arrays to check
     int array[size[4]];      // i,j for indexing size and percentSorted
@@ -40,49 +39,50 @@ int main()
 
     /* MEASUREMENTS FOR STATISTICS */
     // values to change
-    i=0; // from 0 to 4
-    // index of array size[] = {10000, 50000, 100000, 500000, 1000000}
-    j=0 ; // from 0 to 7
-    // index of array percentSorted[] = {0, 25, 50, 75, 95, 99, 99.7}
-    fileName = "sort" + to_string(size[i]) + "elements";
-    file.open(fileName, ios::app);
+    i=2; // from 0 to 4
+    // index of array size[] = {10000, 50000, 100000, 150000, 1000000}
+    for(j=0;j<=6;++j)
+    { // from 0 to 6
+        // index of array percentSorted[] = {0, 25, 50, 75, 95, 99, 99.7}
+        fileName = "E" + to_string(size[i]) + "S" + to_string(ceil(percentSorted[j]));
+        file.open(fileName, ios::app);
 
-    for(int j=0; j<n; ++j)
-    {
-        addRandomSorted(array, size[i], percentSorted[j]);
-        start = std::chrono::system_clock::now();
-        mergesort(array,0,size[i]);
-        end = std::chrono::system_clock::now();
-        file << std::chrono::duration_cast<std::chrono::milliseconds>(
-                end - start).count() << " , ";
+        for (int k = 0; k < n; ++k) {
+            addRandomSorted(array, size[i], percentSorted[j]);
+            start = std::chrono::system_clock::now();
+            mergesort(array, 0, size[i]);
+            end = std::chrono::system_clock::now();
+            file << std::chrono::duration_cast<std::chrono::milliseconds>(
+                    end - start).count() << " , ";
 
-        addRandomSorted(array, size[i], percentSorted[j]);
-        start = std::chrono::system_clock::now();
-        quicksort(array,0,size[i]);
-        end = std::chrono::system_clock::now();
-        file << std::chrono::duration_cast<std::chrono::milliseconds>(
-                end - start).count() << " , ";
+            addRandomSorted(array, size[i], percentSorted[j]);
+            start = std::chrono::system_clock::now();
+            quicksort(array, 0, size[i]);
+            end = std::chrono::system_clock::now();
+            file << std::chrono::duration_cast<std::chrono::milliseconds>(
+                    end - start).count() << " , ";
 
-        addRandomSorted(array, size[i], percentSorted[j]);
-        start = std::chrono::system_clock::now();
-        introsort(array,0,size[i]);
-        end = std::chrono::system_clock::now();
-        file << std::chrono::duration_cast<std::chrono::milliseconds>(
-                end - start).count() << " , ";
+            addRandomSorted(array, size[i], percentSorted[j]);
+            start = std::chrono::system_clock::now();
+            introsort(array, 0, size[i]);
+            end = std::chrono::system_clock::now();
+            file << std::chrono::duration_cast<std::chrono::milliseconds>(
+                    end - start).count() << " ,";
 
-        file << endl;
+            file << endl;
+        }
+        file.close();
     }
-    file.close();
 }
 template <class type>
 void addRandomSorted(type array[], int size, float percentage)
 {
-    int sorted= percentage/100*size;
+    int sorted= (percentage/100)*size;
     for(int i=0; i<size; ++i)
     {
         array[i] = rand() % size*10 +1;
     }
-    //sort(array, array+sorted);
+    sort(array, array+sorted);
 }
 
 template <class type>
